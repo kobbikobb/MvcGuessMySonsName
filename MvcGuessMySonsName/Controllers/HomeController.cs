@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace MvcTheName.Controllers
 {
+    //Jakob Jónasson
     public class HomeController : Controller
     {
         //
