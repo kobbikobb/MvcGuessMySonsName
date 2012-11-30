@@ -27,9 +27,6 @@ namespace MvcTheName.Controllers
             var theName = new TheName();
             ViewBag.GuessResult = theName.IsName(guessedName);
 
-            //Jakob Jónasson
-            //New build
-
             return View();
         }
     }

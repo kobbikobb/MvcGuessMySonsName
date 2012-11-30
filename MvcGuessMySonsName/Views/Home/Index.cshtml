@@ -3,38 +3,25 @@
     ViewBag.Subtitle = "Föðurnafnið þarf ekki að rita, rita þarf nafnið alveg rétt til að rétt svar fáist.";
 }
 
-<div id="body">
-    
-    <section class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-                <h1>@ViewBag.Title.</h1>
-                <h2>@ViewBag.Subtitle</h2>
-            </hgroup>
-        </div>
-    </section>
 
-    <section class="content-wrapper main-content clear-fix">
-          @using (Html.BeginForm("Index", "Home", FormMethod.Post)){    
-         <p> Nafn: @Html.TextBox("guessedName") 
-         <input type="submit" value="Giska" /></p> 
-        }
+@using (Html.BeginForm("Index", "Home", FormMethod.Post)){    
+    <p> Nafn: @Html.TextBox("guessedName") 
+    <input type="submit" value="Giska" /></p> 
+}
         
-        @if (ViewBag.GuessResult != null)
-        {
-            if(ViewBag.GuessResult)
-            {
-                <div style="color:green;font-size:24px"> 
-                    Þú giskaðir á @ViewBag.GuessedName sem er rétt! Til hamingju!
-                </div>
-            }
-            else
-            {
-                <div style="color:red;font-size:24px"> 
-                    Þú giskaðir á @ViewBag.GuessedName sem er rangt!
-                </div> 
-            }
-        }
+@if (ViewBag.GuessResult != null)
+{
+    if(ViewBag.GuessResult)
+    {
+        <div style="color:green;font-size:24px"> 
+            Þú giskaðir á @ViewBag.GuessedName sem er rétt! Til hamingju!
+        </div>
+    }
+    else
+    {
+        <div style="color:red;font-size:24px"> 
+            Þú giskaðir á @ViewBag.GuessedName sem er rangt!
+        </div> 
+    }
+}
 
-    </section>
-</div>
