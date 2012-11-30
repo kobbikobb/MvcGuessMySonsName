@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    ViewBag.Title = "Giskaðu á nafn sonar míns";
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -9,11 +13,26 @@
 </head>
 <body>
 
+    <header>
+        <div class="content-wrapper">
+            <div class="float-right">
+                <nav>
+                    <ul id="menu">
+                        <li>@Html.ActionLink("Heim", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Ágiskanir", "Index", "Guesses")</li>
+                        <li>@Html.ActionLink("Vinsældir ágiskana", "Index", "GuessedNames")</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
     <div id="body">
         <section class="featured">
             <div class="content-wrapper">
                 <hgroup class="title">
-                    <h1>@ViewBag.Title.</h1>
+                    <h1>@ViewBag.Title</h1>
+                    <br />
                     <h2>@ViewBag.Subtitle</h2>
                 </hgroup>
             </div>
