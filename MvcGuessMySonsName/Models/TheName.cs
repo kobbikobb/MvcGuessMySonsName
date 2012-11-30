@@ -8,16 +8,19 @@ namespace MvcGuessMySonsName.Models
     //Jakob Jónasson
     public class TheName
     {
-        private string name = "AG9Yo9bFokfBA6y4A4JVovsh8ogQksUYdqirs/LxQtyPFwL3xV42lCG5wJApDqCcXA==";
+        private string hashedName = "AG9Yo9bFokfBA6y4A4JVovsh8ogQksUYdqirs/LxQtyPFwL3xV42lCG5wJApDqCcXA==";
+        private readonly GuessesRepository guessesRepository;
 
         public TheName()
         {
-
+            guessesRepository = new GuessesRepository();
         }
 
-        public bool IsName(string theName)
+        public bool IsName(string name)
         {
-            return System.Web.Helpers.Crypto.VerifyHashedPassword(name, theName);
+            guessesRepository.SaveGuess(name);
+
+            return System.Web.Helpers.Crypto.VerifyHashedPassword(hashedName, name);
         }
     }
 }

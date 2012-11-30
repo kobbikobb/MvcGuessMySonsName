@@ -122,8 +122,14 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\GuessedNamesController.cs" />
+    <Compile Include="Controllers\GuessesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NamesController.cs" />
+    <Compile Include="Models\DbGuesses.cs" />
+    <Compile Include="Models\Guess.cs" />
+    <Compile Include="Models\GuessedName.cs" />
+    <Compile Include="Models\GuessesRepository.cs" />
     <Compile Include="Models\TheName.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -229,6 +235,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Guesses\Index.cshtml" />
+    <Content Include="Views\GuessedNames\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
