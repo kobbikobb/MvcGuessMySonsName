@@ -130,6 +130,7 @@
     <Compile Include="Models\Guess.cs" />
     <Compile Include="Models\GuessedName.cs" />
     <Compile Include="Models\GuessesRepository.cs" />
+    <Compile Include="Models\IpAddress.cs" />
     <Compile Include="Models\TheName.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

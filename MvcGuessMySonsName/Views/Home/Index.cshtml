@@ -2,7 +2,6 @@
     ViewBag.Subtitle = "Föðurnafnið þarf ekki að rita, rita þarf nafnið alveg rétt til að rétt svar fáist";
 }
 
-
 @using (Html.BeginForm("Index", "Home", FormMethod.Post)){    
     <p> Nafn: @Html.TextBox("guessedName") 
     <input type="submit" value="Giska" /></p> 

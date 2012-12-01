@@ -17,7 +17,12 @@ namespace MvcGuessMySonsName.Models
 
         public List<Guess> GetGuesses()
         {
-            return dbGuesses.Guesses.ToList();
+            return dbGuesses.Guesses.OrderByDescending(x=>x.Date).ToList();
+        }
+
+        public List<Guess> GetMyGuesses()
+        {
+            return dbGuesses.Guesses.Where(x=>x.Ip == IpAddress.Current).OrderByDescending(x => x.Date).ToList();
         }
 
         public List<GuessedName> GetGuessedNames()
@@ -33,7 +38,7 @@ namespace MvcGuessMySonsName.Models
             var guess = new Guess();
             guess.Name = name;
             guess.Date = DateTime.Now;
-            guess.Ip = HttpContext.Current.Request.UserHostAddress;
+            guess.Ip = IpAddress.Current;
 
             dbGuesses.Guesses.Add(guess);
             dbGuesses.SaveChanges();
