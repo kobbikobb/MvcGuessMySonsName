@@ -18,6 +18,5 @@ namespace MvcGuessMySonsName.Controllers
 
             return View(repository.GetGuessedNames());
         }
-
     }
 }

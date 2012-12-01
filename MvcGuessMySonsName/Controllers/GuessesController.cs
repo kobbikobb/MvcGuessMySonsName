@@ -19,5 +19,15 @@ namespace MvcGuessMySonsName.Controllers
             return View(repository.GetGuesses());
         }
 
+        //
+        // GET: /Guesses/MyGuesses
+
+        public ActionResult MyGuesses()
+        {
+            var repository = new GuessesRepository();
+
+            return View("Index", repository.GetMyGuesses());
+        }
+
     }
 }
