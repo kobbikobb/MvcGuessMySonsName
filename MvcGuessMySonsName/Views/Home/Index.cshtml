@@ -1,33 +1,39 @@
 ﻿@{
-    ViewBag.Subtitle = "Föðurnafnið þarf ekki að rita, rita þarf nafnið alveg rétt til að rétt svar fáist";
+    ViewBag.Subtitle = "Litli stúfurinn verður skýrður sunnudaginn 23. desember 2012";
 }
 
-@using (Html.BeginForm("Index", "Home", FormMethod.Post)){    
-    <p> Nafn: @Html.TextBox("guessedName") 
-    <input type="submit" value="Giska" /></p> 
-}
+
+<div class="float-right">
+    <img src="~/Images/ibilnum2.png" width="300"/>
+</div>
+
+<div class="float-left">
+
+    <ul>
+        <li>Hástafir og lágstafir verða að vera réttir</li>
+        <li>Föðurnafni skal sleppa</li>
+        <li>Ef strákurinn fær millinafn þá verður að rita það með</li>
+    </ul>
+
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post)){    
+        <p> Nafn: @Html.TextBox("guessedName") 
+        <input type="submit" value="Giska" /></p> 
+    }
         
-@if (ViewBag.GuessResult != null)
-{
-    if(ViewBag.GuessResult)
+    @if (ViewBag.GuessResult != null)
     {
-        <div style="color:green;font-size:24px"> 
-            Þú giskaðir á @ViewBag.GuessedName sem er rétt! Til hamingju!
-        </div>
+        if(ViewBag.GuessResult)
+        {
+            <div style="color:green;font-size:24px"> 
+                Þú giskaðir á @ViewBag.GuessedName sem er rétt! Til hamingju!
+            </div>
+        }
+        else
+        {
+            <div style="color:red;font-size:24px"> 
+                Þú giskaðir á @ViewBag.GuessedName sem er rangt!
+            </div> 
+        }
     }
-    else
-    {
-        <div style="color:red;font-size:24px"> 
-            Þú giskaðir á @ViewBag.GuessedName sem er rangt!
-        </div> 
-    }
-}
 
-
-@*<div>
-    @{ Html.RenderAction("Index", "Guesses" ); }
-    @{ Html.RenderAction("Index", "GuessedNames" ); }
-</div>*@
-
-
-
+</div>
