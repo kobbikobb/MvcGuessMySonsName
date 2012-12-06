@@ -17,9 +17,10 @@ namespace MvcTheName.Controllers
             return View();
         }
 
-        //
+        //        
         // POST: /Home/
         [HttpPost]
+        [Authorize]
         public ActionResult Index(string guessedName)
         {
             ViewBag.GuessedName = guessedName;

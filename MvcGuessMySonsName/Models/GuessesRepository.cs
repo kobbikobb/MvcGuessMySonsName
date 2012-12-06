@@ -39,6 +39,7 @@ namespace MvcGuessMySonsName.Models
             guess.Name = name;
             guess.Date = DateTime.Now;
             guess.Ip = IpAddress.Current;
+            guess.Username = HttpContext.Current.User.Identity.Name;
 
             dbGuesses.Guesses.Add(guess);
             dbGuesses.SaveChanges();

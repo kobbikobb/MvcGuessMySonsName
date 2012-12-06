@@ -16,6 +16,9 @@
     <header>
         <div class="content-wrapper">
             <div class="float-right">
+                <section id="login">
+                    @Html.Partial("_LoginPartial")
+                </section>
                 <nav>
                     <ul id="menu">
                         <li>@Html.ActionLink("Heim", "Index", "Home")</li>
@@ -43,6 +46,14 @@
             @RenderBody()
         </section>
     </div>
+
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>&copy; @DateTime.Now.Year - Jakob Jónasson</p>
+            </div>
+        </div>
+    </footer>
 
     @* Ætti að vera neðst í síðunni en ég þarf jquery fyrir facebook login, finna betri lausn *@
     @Scripts.Render("~/bundles/jquery")

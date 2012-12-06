@@ -10,6 +10,7 @@ namespace MvcGuessMySonsName.Models
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public string Name { get; set; }
+        public string Username { get; set; }
         public string Ip { get; set; }
     }
 }

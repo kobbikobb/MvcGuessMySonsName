@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace MvcGuessMySonsName.Controllers
 {
+    [Authorize]
     public class GuessedNamesController : Controller
     {
         //
