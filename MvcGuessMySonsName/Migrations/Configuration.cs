@@ -26,6 +26,12 @@ namespace MvcGuessMySonsName.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            foreach (var guess in context.Guesses)
+            {
+                if (string.IsNullOrEmpty(guess.Username))
+                    guess.Username = "Óþekkt";
+            }
         }
     }
 }
