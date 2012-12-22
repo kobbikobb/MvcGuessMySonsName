@@ -4,26 +4,63 @@
     ViewBag.Subtitle = "Fjöldi mismunandi nafna alls: " + Model.Count();
 }
 
-<table>
-    <tr>
-        <th style="min-width:100px">
-            @("Nafn")
-        </th>
-        <th style="min-width:100px">
-            @("Fjöldi")
-        </th>
-        <th></th>
-    </tr>
-    
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Count)
-        </td>
-    </tr>
+@section scripts {
+   <script type="text/javascript">
+
+       lastItem = null;
+
+       function displayNameGuesses(name, item) {
+
+           if (item == lastItem)
+            return;
+
+           lastItem = item;
+
+           $("#partial").load("/Guesses/GetNameGuesses?name=" + encodeURIComponent(name));
+           $("#partial").css("top", $(item).position().top + $(item).height());
+           $("#partial").css('visibility', 'visible').hide().fadeIn(800);
+       }
+       function hideDisplay() {
+           $("#partial").fadeOut(500);
+       }
+   </script>
 }
-    
-</table>
+
+<div style="position:relative">
+
+    <table id="nameGuessesTable">
+
+        <tr>
+            <th></th>
+            <th style="min-width:100px">
+                @("Nafn")
+            </th>
+            <th style="min-width:100px">
+                @("Fjöldi")
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    <img src="~/Images/group.gif" onmouseover="displayNameGuesses('@item.Name', this);" onmouseout="hideDisplay();" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Count)
+                </td>
+            </tr>
+        }
+    </table>
+
+    <div id="partial" style="color:white;background:#7ac0da;padding:2px;border:solid;visibility:hidden;position:absolute;left:20px;top:0;" />
+
+</div>
+
+
+
+
+

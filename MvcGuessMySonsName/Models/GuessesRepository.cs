@@ -25,6 +25,11 @@ namespace MvcGuessMySonsName.Models
             return dbGuesses.Guesses.Where(x=>x.Ip == IpAddress.Current).OrderByDescending(x => x.Date).ToList();
         }
 
+        public List<Guess> GetNameGuesses(string name)
+        {
+            return dbGuesses.Guesses.Where(x => x.Name == name).OrderByDescending(x => x.Date).ToList();
+        }
+
         public List<GuessedName> GetGuessedNames()
         {
             return dbGuesses.Guesses.GroupBy(x => x.Name)
