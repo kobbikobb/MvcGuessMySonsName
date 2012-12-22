@@ -33,7 +33,7 @@ namespace MvcTheName.Controllers
             
             var theName = new TheName();
 
-            ViewBag.GuessResult = theName.IsName(userName, guessedName);
+            ViewBag.GuessResult = theName.MakeGuess(userName, guessedName);
 
             return View();
         }

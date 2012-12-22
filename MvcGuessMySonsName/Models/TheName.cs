@@ -17,12 +17,17 @@ namespace MvcGuessMySonsName.Models
             guessesRepository = new GuessesRepository();
         }
 
-        public bool IsName(string name)
+        public bool VerifyName(string name)
         {
-            return IsName(HttpContext.Current.User.Identity.Name, name);
+            return System.Web.Helpers.Crypto.VerifyHashedPassword(hashedFirstName, name) || System.Web.Helpers.Crypto.VerifyHashedPassword(hasedFullName, name);
         }
 
-        public bool IsName(string userName, string name)
+        public bool MakeGuess(string name)
+        {
+            return MakeGuess(HttpContext.Current.User.Identity.Name, name);
+        }
+
+        public bool MakeGuess(string userName, string name)
         {
             var isName = System.Web.Helpers.Crypto.VerifyHashedPassword(hasedFullName, name) ||
                 System.Web.Helpers.Crypto.VerifyHashedPassword(hasedFullName, name);
@@ -30,7 +35,7 @@ namespace MvcGuessMySonsName.Models
             if (!string.IsNullOrEmpty(userName))
                 guessesRepository.SaveGuess(userName, name);
 
-            return System.Web.Helpers.Crypto.VerifyHashedPassword(hashedFirstName, name) || System.Web.Helpers.Crypto.VerifyHashedPassword(hasedFullName, name);
+            return VerifyName(name);
         }
     }
 }

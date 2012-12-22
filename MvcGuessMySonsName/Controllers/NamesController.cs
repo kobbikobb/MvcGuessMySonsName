@@ -17,7 +17,7 @@ namespace MvcGuessMySonsName.Controllers
         {
             var theName = new TheName();
 
-            return theName.IsName(name);
+            return theName.MakeGuess(name);
         }
     }
 }
