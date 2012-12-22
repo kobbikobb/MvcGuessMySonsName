@@ -11,6 +11,7 @@ namespace MvcGuessMySonsName.Models
         public DateTime Date { get; set; }
         public string Name { get; set; }
         public string Username { get; set; }
+        public bool Correct { get; set; }
         public string Ip { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace MvcGuessMySonsName.Models
 
         public List<Guess> GetGuesses()
         {
-            return dbGuesses.Guesses.OrderByDescending(x=>x.Date).ToList();
+            return dbGuesses.Guesses.Where(x => !x.Correct).OrderByDescending(x => x.Date).ToList();
         }
 
         public List<Guess> GetMyGuesses()
@@ -32,7 +32,7 @@ namespace MvcGuessMySonsName.Models
 
         public List<GuessedName> GetGuessedNames()
         {
-            return dbGuesses.Guesses.GroupBy(x => x.Name)
+            return dbGuesses.Guesses.Where(x=>!x.Correct).GroupBy(x => x.Name)
                 .Select(x => new GuessedName() { Name = x.Key, Count = x.Count() })
                 .OrderByDescending(x=>x.Count)
                 .ToList();

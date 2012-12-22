@@ -168,6 +168,10 @@
     <Compile Include="Migrations\201212062232192_Username.Designer.cs">
       <DependentUpon>201212062232192_Username.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201212222332455_Correct.cs" />
+    <Compile Include="Migrations\201212222332455_Correct.Designer.cs">
+      <DependentUpon>201212222332455_Correct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\DbGuesses.cs" />
@@ -312,6 +316,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201212062232192_Username.resx">
       <DependentUpon>201212062232192_Username.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201212222332455_Correct.resx">
+      <DependentUpon>201212222332455_Correct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

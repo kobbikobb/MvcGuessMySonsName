@@ -17,7 +17,7 @@ namespace MvcGuessMySonsName.Models
             guessesRepository = new GuessesRepository();
         }
 
-        public bool VerifyName(string name)
+        private bool VerifyName(string name)
         {
             return System.Web.Helpers.Crypto.VerifyHashedPassword(hashedFirstName, name) || System.Web.Helpers.Crypto.VerifyHashedPassword(hasedFullName, name);
         }

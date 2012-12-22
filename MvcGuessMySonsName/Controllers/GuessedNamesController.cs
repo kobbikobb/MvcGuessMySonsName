@@ -18,10 +18,7 @@ namespace MvcGuessMySonsName.Controllers
             var repository = new GuessesRepository();
             var theName = new TheName();
 
-            var guessedNames = repository.GetGuessedNames().
-                Where(x => !theName.VerifyName(x.Name)).ToList();
-
-            return View(guessedNames);
+            return View(repository.GetGuessedNames());
         }
     }
 }

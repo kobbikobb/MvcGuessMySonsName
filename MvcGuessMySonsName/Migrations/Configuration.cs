@@ -27,13 +27,6 @@ namespace MvcGuessMySonsName.Migrations
             //    );
             //
 
-            foreach (var guess in context.Guesses)
-            {
-                if (string.IsNullOrEmpty(guess.Username) || guess.Username == "Óþekkt")
-                {
-                    context.Entry(guess).State = System.Data.EntityState.Deleted;
-                }
-            }
             //var guesses = context.Guesses.ToList();
 
             //for (int i = guesses.Count - 1; i >= 0; i--)
