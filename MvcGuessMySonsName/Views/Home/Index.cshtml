@@ -14,9 +14,25 @@
         <li>Ef strákurinn fær millinafn þá verður að rita það með</li>
     </ul>
 
-    @using (Html.BeginForm("Index", "Home", FormMethod.Post)){    
-        <p> Nafn: @Html.TextBox("guessedName") 
-        <input type="submit" value="Giska" /></p> 
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {  
+        <table style="width:150px">
+            @if (!Request.IsAuthenticated)
+            {
+                var userName = (string)(ViewBag.UserName ?? string.Empty);
+                <tr>
+                     <td>Nafn þitt: @Html.TextBox("userName", userName)</td>
+                 </tr>
+            }
+            <tr>
+                <td>Þín ágiskun: @Html.TextBox("guessedName")</td>
+            </tr>
+            <tr style="text-align:right">
+                <td>
+                    <input type="submit" value="Giska" />
+                </td>
+            </tr>
+        </table>
     }
         
     @if (ViewBag.GuessResult != null)

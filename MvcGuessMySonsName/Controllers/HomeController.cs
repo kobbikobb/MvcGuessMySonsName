@@ -20,12 +20,15 @@ namespace MvcTheName.Controllers
         //        
         // POST: /Home/
         [HttpPost]
-        public ActionResult Index(string guessedName)
+        public ActionResult Index(string userName, string guessedName)
         {
+            ViewBag.YourName = userName;
             ViewBag.GuessedName = guessedName;
-
+            
             var theName = new TheName();
-            ViewBag.GuessResult = theName.IsName(guessedName);
+
+            ViewBag.GuessResult = string.IsNullOrEmpty(userName) ? theName.IsName(guessedName) :
+                theName.IsName(userName, guessedName);
 
             return View();
         }

@@ -35,14 +35,19 @@ namespace MvcGuessMySonsName.Models
 
         public void SaveGuess(string name)
         {
+            SaveGuess(HttpContext.Current.User.Identity.Name, name);
+        }
+
+        public void SaveGuess(string userName, string name)
+        {
+            if (string.IsNullOrEmpty(userName))
+                return;
+
             var guess = new Guess();
             guess.Name = name;
             guess.Date = DateTime.Now;
             guess.Ip = IpAddress.Current;
-            guess.Username = HttpContext.Current.User.Identity.Name;
-
-            if (string.IsNullOrEmpty(guess.Username))
-                return;
+            guess.Username = userName;
 
             dbGuesses.Guesses.Add(guess);
             dbGuesses.SaveChanges();

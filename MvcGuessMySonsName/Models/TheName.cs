@@ -22,5 +22,12 @@ namespace MvcGuessMySonsName.Models
 
             return System.Web.Helpers.Crypto.VerifyHashedPassword(hashedName, name);
         }
+
+        public bool IsName(string userName, string name)
+        {
+            guessesRepository.SaveGuess(userName, name);
+
+            return System.Web.Helpers.Crypto.VerifyHashedPassword(hashedName, name);
+        }
     }
 }
