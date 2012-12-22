@@ -41,6 +41,9 @@ namespace MvcGuessMySonsName.Models
             guess.Ip = IpAddress.Current;
             guess.Username = HttpContext.Current.User.Identity.Name;
 
+            if (string.IsNullOrEmpty(guess.Username))
+                return;
+
             dbGuesses.Guesses.Add(guess);
             dbGuesses.SaveChanges();
         }
