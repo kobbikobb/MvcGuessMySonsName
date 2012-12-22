@@ -17,7 +17,6 @@ namespace MvcTheName.Controllers
             return View();
         }
 
-
         //        
         // POST: /Home/
         [HttpPost]
@@ -26,12 +25,7 @@ namespace MvcTheName.Controllers
             if (Request.IsAuthenticated)
                 userName = System.Web.HttpContext.Current.User.Identity.Name;
 
-            if (string.IsNullOrEmpty(userName))
-                ModelState.AddModelError("userName", "Vinsamlegast settu inn nafn þitt");
-            if (string.IsNullOrEmpty(guessedName))
-                ModelState.AddModelError("guessedName", "Vinsamlegast settu inn ágiskun");
-
-            if (ModelState.Count() > 0)
+            if (IsErrorInPost(userName, guessedName))
                 return View();
 
             ViewBag.YourName = userName;
@@ -42,6 +36,24 @@ namespace MvcTheName.Controllers
             ViewBag.GuessResult = theName.IsName(userName, guessedName);
 
             return View();
+        }
+
+        private bool IsErrorInPost(string userName, string guessedName)
+        {
+            bool error = false;
+            if (string.IsNullOrEmpty(userName))
+            {
+                ModelState.AddModelError("userName", "Vinsamlegast settu inn nafn þitt");
+                error = true;
+            }
+            if (string.IsNullOrEmpty(guessedName))
+            {
+                ModelState.AddModelError("guessedName", "Vinsamlegast settu inn ágiskun");
+                error = true;
+            }
+
+            return error;
+
         }
     }
 }
