@@ -33,16 +33,8 @@ namespace MvcGuessMySonsName.Models
                 .ToList();
         }
 
-        public void SaveGuess(string name)
-        {
-            SaveGuess(HttpContext.Current.User.Identity.Name, name);
-        }
-
         public void SaveGuess(string userName, string name)
         {
-            if (string.IsNullOrEmpty(userName))
-                return;
-
             var guess = new Guess();
             guess.Name = name;
             guess.Date = DateTime.Now;

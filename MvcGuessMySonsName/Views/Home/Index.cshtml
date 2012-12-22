@@ -21,15 +21,15 @@
             {
                 var userName = (string)(ViewBag.UserName ?? string.Empty);
                 <tr>
-                     <td>Nafn þitt: @Html.TextBox("userName", userName)</td>
+                     <td>Nafn þitt: @Html.TextBox("userName", userName) @Html.ValidationMessage("userName")</td>
                  </tr>
             }
             <tr>
-                <td>Þín ágiskun: @Html.TextBox("guessedName")</td>
+                <td>Þín ágiskun: @Html.TextBox("guessedName") @Html.ValidationMessage("guessedName")</td>
             </tr>
             <tr style="text-align:right">
                 <td>
-                    <input type="submit" value="Giska" />
+                    <input type="submit" value="Giska" style="width:80px" />
                 </td>
             </tr>
         </table>

@@ -18,14 +18,13 @@ namespace MvcGuessMySonsName.Models
 
         public bool IsName(string name)
         {
-            guessesRepository.SaveGuess(name);
-
-            return System.Web.Helpers.Crypto.VerifyHashedPassword(hashedName, name);
+            return IsName(HttpContext.Current.User.Identity.Name, name);
         }
 
         public bool IsName(string userName, string name)
         {
-            guessesRepository.SaveGuess(userName, name);
+            if (!string.IsNullOrEmpty(userName))
+                guessesRepository.SaveGuess(userName, name);
 
             return System.Web.Helpers.Crypto.VerifyHashedPassword(hashedName, name);
         }

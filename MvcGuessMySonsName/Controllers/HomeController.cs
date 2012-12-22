@@ -22,13 +22,23 @@ namespace MvcTheName.Controllers
         [HttpPost]
         public ActionResult Index(string userName, string guessedName)
         {
+            if (Request.IsAuthenticated)
+                userName = System.Web.HttpContext.Current.User.Identity.Name;
+
+            if (string.IsNullOrEmpty(userName))
+                ModelState.AddModelError("userName", "Vinsamlegast settu inn nafn þitt");
+            if (string.IsNullOrEmpty(guessedName))
+                ModelState.AddModelError("guessedName", "Vinsamlegast settu inn ágiskun");
+
+            if (ModelState.Count() > 0)
+                return View();
+
             ViewBag.YourName = userName;
             ViewBag.GuessedName = guessedName;
             
             var theName = new TheName();
 
-            ViewBag.GuessResult = string.IsNullOrEmpty(userName) ? theName.IsName(guessedName) :
-                theName.IsName(userName, guessedName);
+            ViewBag.GuessResult = theName.IsName(userName, guessedName);
 
             return View();
         }
