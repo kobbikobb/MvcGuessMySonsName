@@ -16,9 +16,10 @@
 
            lastItem = item;
 
-           $("#partial").load("/Guesses/GetNameGuesses?name=" + encodeURIComponent(name));
-           $("#partial").css("top", $(item).position().top + $(item).height());
-           $("#partial").css('visibility', 'visible').hide().fadeIn(800);
+           $("#partial").load("/Guesses/GetNameGuesses?name=" + encodeURIComponent(name), function () {
+               $("#partial").css("top", $(item).position().top + $(item).height());
+               $("#partial").css('visibility', 'visible').hide().fadeIn(800);
+           });
        }
        function hideDisplay() {
            $("#partial").fadeOut(500);
