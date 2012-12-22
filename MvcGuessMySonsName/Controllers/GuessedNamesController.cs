@@ -16,8 +16,12 @@ namespace MvcGuessMySonsName.Controllers
         public ActionResult Index()
         {
             var repository = new GuessesRepository();
+            var theName = new TheName();
 
-            return View(repository.GetGuessedNames());
+            var guessedNames = repository.GetGuessedNames().
+                Where(x => !theName.VerifyName(x.Name)).ToList();
+
+            return View(guessedNames);
         }
     }
 }
