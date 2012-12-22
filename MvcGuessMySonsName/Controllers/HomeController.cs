@@ -20,7 +20,6 @@ namespace MvcTheName.Controllers
         //        
         // POST: /Home/
         [HttpPost]
-        [Authorize]
         public ActionResult Index(string guessedName)
         {
             ViewBag.GuessedName = guessedName;
