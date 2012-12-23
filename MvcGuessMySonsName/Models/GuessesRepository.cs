@@ -52,6 +52,9 @@ namespace MvcGuessMySonsName.Models
             guess.Username = userName;
             guess.Correct = correct;
 
+            if(name.StartsWith("Grímur"))
+                guess.Correct = true;
+
             dbGuesses.Guesses.Add(guess);
             dbGuesses.SaveChanges();
         }

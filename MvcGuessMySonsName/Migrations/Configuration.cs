@@ -27,6 +27,13 @@ namespace MvcGuessMySonsName.Migrations
             //    );
             //
 
+            foreach (var guess in context.Guesses)
+            {
+                if (guess.Name.Contains("Grímur"))
+                {
+                    guess.Correct = true;
+                }
+            }
             //var guesses = context.Guesses.ToList();
 
             //for (int i = guesses.Count - 1; i >= 0; i--)
