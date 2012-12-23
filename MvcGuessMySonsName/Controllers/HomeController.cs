@@ -21,9 +21,19 @@ namespace MvcTheName.Controllers
             ViewBag.CorrectCount = correct.Count;
 
             if (correct.Count > 0)
-                ViewBag.CorrectUsers = correct.Select(x => x.Username).Distinct().Aggregate((x, y) => x + ", " + y);
+            {
+                var names = correct.Select(x => x.Username).Distinct().Aggregate((x, y) => x + ", " + y);
+
+                var lastIndex = names.LastIndexOf(",");
+                if(lastIndex != -1)
+                    names = names.Substring(0, lastIndex) + " og" + names.Substring(lastIndex + 1);
+
+                ViewBag.CorrectUsers = names;
+            }
             else
+            {
                 ViewBag.CorrectUsers = "engir";
+            }
             return View();
         }
 
