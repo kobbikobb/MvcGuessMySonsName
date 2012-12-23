@@ -20,6 +20,10 @@ namespace MvcTheName.Controllers
 
             ViewBag.CorrectCount = correct.Count;
 
+            if (correct.Count > 0)
+                ViewBag.CorrectUsers = correct.Select(x => x.Username).Aggregate((x, y) => x + ", " + y);
+            else
+                ViewBag.CorrectUsers = "engir";
             return View();
         }
 
