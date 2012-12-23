@@ -6,17 +6,15 @@
     <img src="~/Images/ibilnumsmall.png" width="300"/>
 </div>
 
-<div class="float-left">
+<div class="float-left" style="width:500px">
 
-    <p style="color:blue">
-        Fjöldi réttra ágiskana er: @ViewBag.CorrectCount. Þeir sem eru búnir að giska á rétt nafn eru: @ViewBag.CorrectUsers
+    <p style="width:500px;color:blue;">
+        Þeir sem eru búnir að giska á rétt nafn eru: @ViewBag.CorrectUsers.
     </p>
 
-    <ul>
-        <li>Hástafir og lágstafir verða að vera réttir</li>
-        <li>Föðurnafni skal sleppa</li>
-        <li>Ef strákurinn fær millinafn þá verður að rita það með</li>
-    </ul>
+    <p>
+        Há og lág stafir verða að vera réttir. Gefið er rétt fyrir fornafnið eða fornafnið og millinafnið saman.
+    </p>
 
     @using (Html.BeginForm("Index", "Home", FormMethod.Post))
     {  
