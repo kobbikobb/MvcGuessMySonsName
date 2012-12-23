@@ -14,6 +14,12 @@ namespace MvcTheName.Controllers
         // GET: /Home/
         public ActionResult Index()
         {
+            var repository = new GuessesRepository();
+
+            var correct = repository.GetCorrectGuesses();
+
+            ViewBag.CorrectCount = correct.Count;
+
             return View();
         }
 
@@ -35,7 +41,7 @@ namespace MvcTheName.Controllers
 
             ViewBag.GuessResult = theName.MakeGuess(userName, guessedName);
 
-            return View();
+            return Index();
         }
 
         private bool IsErrorInPost(string userName, string guessedName)

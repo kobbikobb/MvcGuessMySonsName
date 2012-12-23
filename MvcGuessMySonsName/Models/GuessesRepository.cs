@@ -30,6 +30,11 @@ namespace MvcGuessMySonsName.Models
             return dbGuesses.Guesses.Where(x => x.Name == name).OrderByDescending(x => x.Date).ToList();
         }
 
+        public List<Guess> GetCorrectGuesses()
+        {
+            return dbGuesses.Guesses.Where(x => x.Correct).OrderByDescending(x => x.Date).ToList();
+        }
+
         public List<GuessedName> GetGuessedNames()
         {
             return dbGuesses.Guesses.Where(x=>!x.Correct).GroupBy(x => x.Name)
