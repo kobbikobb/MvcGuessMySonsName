@@ -7,16 +7,13 @@ using System.Web.Mvc;
 
 namespace MvcGuessMySonsName.Controllers
 {
-    [Authorize]
     public class GuessedNamesController : Controller
     {
         //
         // GET: /GuessedNames/
-
         public ActionResult Index()
         {
             var repository = new GuessesRepository();
-            var theName = new TheName();
 
             return View(repository.GetGuessedNames());
         }

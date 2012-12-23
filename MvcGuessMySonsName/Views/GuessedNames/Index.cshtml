@@ -7,23 +7,20 @@
 @section scripts {
    <script type="text/javascript">
 
-       lastItem = null;
-
-       function displayNameGuesses(name, item) {
-
-           if (item == lastItem)
-            return;
-
-           lastItem = item;
+       $(".rowInfo").mouseover(function () {
+           var item = this;
+           var name = $(item).data("name");
 
            $("#partial").load("/Guesses/GetNameGuesses?name=" + encodeURIComponent(name), function () {
                $("#partial").css("top", $(item).position().top + $(item).height());
                $("#partial").css('visibility', 'visible').hide().fadeIn(800);
            });
-       }
-       function hideDisplay() {
+       });
+
+       $(".rowInfo").mouseout(function () {
            $("#partial").fadeOut(500);
-       }
+       });
+
    </script>
 }
 
@@ -45,7 +42,7 @@
         @foreach (var item in Model) {
             <tr>
                 <td>
-                    <img src="~/Images/group.gif" onmouseover="displayNameGuesses('@item.Name', this);" onmouseout="hideDisplay();" />
+                    <img class="rowInfo" data-name="@item.Name" src="~/Images/group.gif" />
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)

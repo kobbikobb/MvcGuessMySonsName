@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace MvcGuessMySonsName.Controllers
 {
-    [Authorize]
+ 
     public class GuessesController : Controller
     {
         //
@@ -21,7 +21,7 @@ namespace MvcGuessMySonsName.Controllers
 
         //
         // GET: /Guesses/MyGuesses
-                public ActionResult MyGuesses()
+        public ActionResult MyGuesses()
         {
             var repository = new GuessesRepository();
 
