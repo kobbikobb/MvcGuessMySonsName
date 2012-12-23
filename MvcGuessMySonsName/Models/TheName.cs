@@ -33,7 +33,7 @@ namespace MvcGuessMySonsName.Models
                 System.Web.Helpers.Crypto.VerifyHashedPassword(hasedFullName, name);
 
             if (!string.IsNullOrEmpty(userName))
-                guessesRepository.SaveGuess(userName, name);
+                guessesRepository.SaveGuess(userName, name, isName);
 
             return VerifyName(name);
         }

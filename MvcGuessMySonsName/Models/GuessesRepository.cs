@@ -43,13 +43,14 @@ namespace MvcGuessMySonsName.Models
                 .ToList();
         }
 
-        public void SaveGuess(string userName, string name)
+        public void SaveGuess(string userName, string name, bool correct)
         {
             var guess = new Guess();
             guess.Name = name;
             guess.Date = DateTime.Now;
             guess.Ip = IpAddress.Current;
             guess.Username = userName;
+            guess.Correct = correct;
 
             dbGuesses.Guesses.Add(guess);
             dbGuesses.SaveChanges();
